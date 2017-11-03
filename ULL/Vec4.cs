@@ -212,6 +212,11 @@
 		/// </summary>
 		/// <returns>Returns the inverted version of this vector</returns>
 		public Vec4 Invert() { return new Vec4(this) * -1; }
+		/// <summary>
+		/// Creates string representation of the current Instance.
+		/// </summary>
+		/// <returns>A string representing this instance</returns>
+		public override string ToString() { return "[" + X + "," + Y + ","+Z+","+W+"]"; }
 		#endregion
 		#region Operators
 		#region Conversion

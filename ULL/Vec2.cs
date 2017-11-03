@@ -111,6 +111,12 @@
 		/// </summary>
 		/// <returns>Returns the inverted version of this vector</returns>
 		public Vec2 Invert() { return new Vec2(this) * -1; }
+
+		/// <summary>
+		/// Creates string representation of the current Instance.
+		/// </summary>
+		/// <returns>A string representing this instance</returns>
+		public override string ToString() { return "[" + X + "," + Y + "]"; }
 		#endregion
 		#region Operators
 		#region Conversion

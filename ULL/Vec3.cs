@@ -142,6 +142,11 @@
 		/// </summary>
 		/// <returns>Returns the inverted version of this vector</returns>
 		public Vec3 Invert() { return new Vec3(this) * -1; }
+		/// <summary>
+		/// Creates string representation of the current Instance.
+		/// </summary>
+		/// <returns>A string representing this instance</returns>
+		public override string ToString() { return "[" + X + "," + Y + ","+Z+"]"; }
 		#endregion
 		#region Operators
 		#region Conversion
