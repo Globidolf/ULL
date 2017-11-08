@@ -22,7 +22,6 @@
 		/// The depth W axis coordinate of this vector
 		/// </summary>
 		public float W { get; set; }
-		#endregion
 		#region Constants
 		/// <summary>
 		/// A 4D-Vector representing the top direction (0,1,0)
@@ -136,6 +135,7 @@
 		public Vec2 XW { get { return new Vec2(X, W); } }
 		public Vec2 YW { get { return new Vec2(Y, W); } }
 		public Vec2 ZW { get { return new Vec2(Z, W); } }
+		#endregion
 		#endregion
 		#endregion
 		#region Constructors

@@ -14,7 +14,6 @@
 		/// The vertical Y axis coordinate of this vector
 		/// </summary>
 		public float Y { get; set; }
-		#endregion
 		#region Constants
 		/// <summary>
 		/// A 2D-Vector representing the top direction (0,1)
@@ -44,6 +43,7 @@
 		#region Dimension Swap
 		public Vec2 XY { get { return new Vec2(X, Y); } }
 		public Vec2 YX { get { return new Vec2(Y, X); } }
+		#endregion
 		#endregion
 		#region Constructors
 		/// <summary>

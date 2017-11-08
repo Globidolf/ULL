@@ -18,7 +18,6 @@
 		/// The depth Z axis coordinate of this vector
 		/// </summary>
 		public float Z { get; set; }
-		#endregion
 		#region Constants
 		/// <summary>
 		/// A 3D-Vector representing the top direction (0,1,0)
@@ -67,6 +66,7 @@
 		public Vec2 YZ { get { return new Vec2(Y, Z); } }
 		public Vec2 ZX { get { return new Vec2(Z, X); } }
 		public Vec2 ZY { get { return new Vec2(Z, Y); } }
+		#endregion
 		#endregion
 		#endregion
 		#region Constructors
