@@ -1,9 +1,20 @@
-﻿using System;
+﻿/***************************************
+ *	ULL.Timers.TimerBase
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	0.1
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+using System;
 using System.Threading;
 using static System.Threading.Timeout;
 namespace ULL.Timers
 {
-    public abstract class TimerBase
+	public abstract class TimerBase
 	{
 		protected DateTime _StartStamp;
 		protected DateTime _PauseStamp;
@@ -11,11 +22,9 @@ namespace ULL.Timers
 		protected Action _Action;
 		protected State _TimerState;
 
-		public State TimerState
-		{
+		public State TimerState {
 			get { return _TimerState; }
-			set
-			{
+			set {
 				switch (value)
 				{
 					case State.Invalid: break;
@@ -25,11 +34,9 @@ namespace ULL.Timers
 				}
 			}
 		}
-		public Action Action
-		{
+		public Action Action {
 			get { return _Action; }
-			set
-			{
+			set {
 				if (TimerState == State.Stopped) _Action = value;
 				else if (TimerState != State.Invalid)
 				{

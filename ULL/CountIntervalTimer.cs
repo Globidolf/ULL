@@ -1,4 +1,15 @@
-﻿using System;
+﻿/***************************************
+ *	ULL.Timers.CountIntervalTimer
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	0.1
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+using System;
 using System.Threading;
 using static System.Threading.Timeout;
 namespace ULL.Timers
@@ -7,11 +18,9 @@ namespace ULL.Timers
 	{
 
 		private int _Interval;
-		public int Interval
-		{
+		public int Interval {
 			get { return _Interval; }
-			set
-			{
+			set {
 				switch (TimerState)
 				{
 					case State.Running: // If the is running we have to pause it momentarily.
@@ -27,8 +36,7 @@ namespace ULL.Timers
 		private int _Counter;
 
 		private int _Count;
-		public int Count
-		{
+		public int Count {
 			get { return _Count; }
 			set {
 				switch (TimerState)
@@ -64,8 +72,9 @@ namespace ULL.Timers
 				else
 				{
 					_StartStamp = DateTime.Now;
-					_Timer = new Timer((a) => {
-						if(++_Counter <= _Count)  Action(); else Stop();
+					_Timer = new Timer((a) =>
+					{
+						if (++_Counter <= _Count) Action(); else Stop();
 					}, null, 0, Interval);
 				}
 				_TimerState = State.Running;

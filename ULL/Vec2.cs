@@ -1,4 +1,15 @@
-﻿namespace ULL.Vector
+﻿/***************************************
+ *	ULL.Vectors.Vec2
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	1.0
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+namespace ULL.Vectors
 {
 	/// <summary>
 	/// Represents a vector in 2D space

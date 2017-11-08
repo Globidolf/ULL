@@ -1,4 +1,15 @@
-﻿using System;
+﻿/***************************************
+ *	ULL.Timers.IntervalTimer
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	1.0
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+using System;
 using System.Threading;
 using static System.Threading.Timeout;
 namespace ULL.Timers
@@ -6,7 +17,7 @@ namespace ULL.Timers
 	/// <summary>
 	/// This Timer will invoke a callback periodically.
 	/// </summary>
-    public class IntervalTimer : TimerBase
+	public class IntervalTimer : TimerBase
 	{
 		#region Fields
 		private int _Interval;
@@ -17,14 +28,17 @@ namespace ULL.Timers
 		/// </summary>
 		public int Interval {
 			get { return _Interval; }
-			set { switch (TimerState) {
+			set {
+				switch (TimerState)
+				{
 					case State.Running: // If the is running we have to pause it momentarily.
 						Pause();
 						_Interval = value;
 						Start();
 						break;
 					default: _Interval = value; break;
-			} }
+				}
+			}
 		}
 		#endregion
 		#region Methods

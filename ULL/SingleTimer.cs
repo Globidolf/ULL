@@ -1,4 +1,15 @@
-﻿using System;
+﻿/***************************************
+ *	ULL.Timers.SingleTimer
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	0.1
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+using System;
 using System.Threading;
 using static System.Threading.Timeout; 
 namespace ULL.Timers

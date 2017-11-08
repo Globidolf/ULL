@@ -1,4 +1,15 @@
-﻿namespace ULL.Vector
+﻿/***************************************
+ *	ULL.Vectors.Vec4
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	1.0
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+namespace ULL.Vectors
 {
 	/// <summary>
 	/// Represents a vector in 4D space
@@ -142,7 +153,7 @@
 		/// <summary>
 		/// Creates a 4D vector with zero distance (0,0,0)
 		/// </summary>
-		public Vec4() : this(0) {}
+		public Vec4() : this(0) { }
 		/// <summary>
 		/// Creates a 4D vector with all coordinates set to <paramref name="value"/>
 		/// </summary>
@@ -152,7 +163,7 @@
 		/// Duplicates the 4D vector <paramref name="copy"/> into a new instance.
 		/// </summary>
 		/// <param name="copy">The vector to duplicate</param>
-		public Vec4(Vec4 copy) : this(copy.X,copy.Y,copy.Z,copy.W) { }
+		public Vec4(Vec4 copy) : this(copy.X, copy.Y, copy.Z, copy.W) { }
 		/// <summary>
 		/// Turns a 3D vector into a 4D vector, with the remaining axis set to 0(zero).
 		/// </summary>
@@ -162,7 +173,7 @@
 		/// Turns a 2D vector into a 4D vector, with the remaining axis set to 0(zero).
 		/// </summary>
 		/// <param name="vec">The vector to duplicate</param>
-		public Vec4(Vec2 vec) : this(vec.X,vec.Y,0,0) { }
+		public Vec4(Vec2 vec) : this(vec.X, vec.Y, 0, 0) { }
 		/// <summary>
 		/// Creates a specific 4D vector instance with the given values
 		/// </summary>
@@ -216,7 +227,7 @@
 		/// Creates string representation of the current Instance.
 		/// </summary>
 		/// <returns>A string representing this instance</returns>
-		public override string ToString() { return "[" + X + "," + Y + ","+Z+","+W+"]"; }
+		public override string ToString() { return "[" + X + "," + Y + "," + Z + "," + W + "]"; }
 		#endregion
 		#region Operators
 		#region Conversion
@@ -232,7 +243,7 @@
 		public static implicit operator Vec4(long src) { return new Vec4(src); }
 		public static implicit operator Vec4(Vec2 src) { return new Vec4(src); }
 		public static implicit operator Vec4(Vec3 src) { return new Vec4(src); }
-#endregion
+		#endregion
 		#region Calculation
 		#region Vec4 : float
 		/// <summary>
@@ -353,8 +364,8 @@
 		/// <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
 		/// <returns>returns the result of the subtraction</returns>
 		public static Vec4 operator -(Vec4 left, Vec2 right) { return new Vec4(left.X - right.X, left.Y - right.Y, left.Z, left.W); }
-#endregion
-#endregion
-#endregion
+		#endregion
+		#endregion
+		#endregion
 	}
 }

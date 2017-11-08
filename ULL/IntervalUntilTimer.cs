@@ -1,4 +1,15 @@
-﻿using System;
+﻿/***************************************
+ *	ULL.Timers.IntervalUntilTimer
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	1.0
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+using System;
 using System.Threading;
 using static System.Threading.Timeout;
 namespace ULL.Timers
@@ -25,11 +36,9 @@ namespace ULL.Timers
 		/// <summary>
 		/// The Interval in which the Timer is called periodically
 		/// </summary>
-		public int Interval
-		{
+		public int Interval {
 			get { return _Interval; }
-			set
-			{
+			set {
 				switch (TimerState)
 				{
 					case State.Running: // If the is running we have to pause it momentarily.
@@ -44,11 +53,9 @@ namespace ULL.Timers
 		/// <summary>
 		/// The Moment the Timer should be stopped automatically
 		/// </summary>
-		public DateTime End
-		{
+		public DateTime End {
 			get { return _End; }
-			set
-			{
+			set {
 				switch (TimerState)
 				{
 					case State.Running:
@@ -68,11 +75,9 @@ namespace ULL.Timers
 		/// <summary>
 		/// The callback to be invoked when <see cref="End"/> is reached
 		/// </summary>
-		public Action EndCallback
-		{
+		public Action EndCallback {
 			get { return _EndCallback; }
-			set
-			{
+			set {
 				_EndCallback = value;
 				if (TimerState != State.Stopped)
 				{

@@ -1,10 +1,21 @@
-﻿namespace ULL.Timers
+﻿/***************************************
+ *	ULL.Timers.State
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	1.0
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+namespace ULL.Timers
 {
 	/// <summary>
 	/// Describes the current state of a timer
 	/// </summary>
-    public enum State
-    {
+	public enum State
+	{
 		/// <summary>
 		/// This state is invalid. Something went wrong.
 		/// </summary>
@@ -21,5 +32,5 @@
 		/// The timer has been stopped. It cannot continue.
 		/// </summary>
 		Stopped
-    }
+	}
 }

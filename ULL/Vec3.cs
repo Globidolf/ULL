@@ -1,4 +1,15 @@
-﻿namespace ULL.Vector
+﻿/***************************************
+ *	ULL.Vectors.Vec3
+ * 
+ *	Author:		Silvan Pfister
+ * 
+ *	Version:	1.0
+ * 
+ *	Project:	ULL
+ * 
+ ***************************************/
+
+namespace ULL.Vectors
 {
 	/// <summary>
 	/// Represents a vector in 3D space
@@ -73,7 +84,7 @@
 		/// <summary>
 		/// Creates a 3D vector with zero distance (0,0,0)
 		/// </summary>
-		public Vec3() : this(0) {}
+		public Vec3() : this(0) { }
 		/// <summary>
 		/// Creates a 3D vector with all coordinates set to <paramref name="value"/>
 		/// </summary>
@@ -83,12 +94,12 @@
 		/// Duplicates the 3D vector <paramref name="copy"/> into a new instance.
 		/// </summary>
 		/// <param name="copy">The vector to duplicate</param>
-		public Vec3(Vec3 copy) : this(copy.X,copy.Y,copy.Z) { }
+		public Vec3(Vec3 copy) : this(copy.X, copy.Y, copy.Z) { }
 		/// <summary>
 		/// Turns a 2D vector into a 3D vector, with the remaining axis set to 0(zero).
 		/// </summary>
 		/// <param name="vec">The vector to duplicate</param>
-		public Vec3(Vec2 vec) : this(vec.X,vec.Y,0) { }
+		public Vec3(Vec2 vec) : this(vec.X, vec.Y, 0) { }
 		public Vec3(Vec4 vec) : this(vec.X, vec.Y, vec.Z) { }
 		/// <summary>
 		/// Creates a specific 3D vector instance with the given values
@@ -146,7 +157,7 @@
 		/// Creates string representation of the current Instance.
 		/// </summary>
 		/// <returns>A string representing this instance</returns>
-		public override string ToString() { return "[" + X + "," + Y + ","+Z+"]"; }
+		public override string ToString() { return "[" + X + "," + Y + "," + Z + "]"; }
 		#endregion
 		#region Operators
 		#region Conversion
@@ -162,7 +173,7 @@
 		public static implicit operator Vec3(long src) { return new Vec3(src); }
 		public static implicit operator Vec3(Vec2 src) { return new Vec3(src); }
 		public static implicit operator Vec3(Vec4 src) { return new Vec3(src); }
-#endregion
+		#endregion
 		#region Calculation
 		#region Vec3 : float
 		/// <summary>
