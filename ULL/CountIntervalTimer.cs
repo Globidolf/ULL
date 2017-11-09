@@ -3,7 +3,7 @@
  * 
  *	Author:		Silvan Pfister
  * 
- *	Version:	1.0
+ *	Version:	1.1
  * 
  *	Project:	ULL
  * 
@@ -23,6 +23,7 @@ namespace ULL.Timers
 		private int _Interval;
 		private int _Counter;
 		private int _Count;
+		private Action _EndCallback;
 		#endregion
 		#region Properties
 		/// <summary>
@@ -67,14 +68,33 @@ namespace ULL.Timers
 				}
 			}
 		}
+		/// <summary>
+		/// The callback to be invoked when <see cref="Count"/> is reached
+		/// </summary>
+		public Action EndCallback {
+			get { return _EndCallback; }
+			set {
+				_EndCallback = value;
+				Action = Action; // endcallback is part of an amalgam with action, this enforces a refresh of the amalgam
+			}
+		}
 		#endregion
 		#region Methods
 		#region Constructor
-		public CountIntervalTimer(Action action, int count, int interval, bool start = false)
+		/// <summary>
+		/// Creates an instance of the <see cref="CountIntervalTimer"/> class
+		/// </summary>
+		/// <param name="action">The callback for the timer</param>
+		/// <param name="count">The amount of times the callback will be invoked</param>
+		/// <param name="interval">The interval in which the callback is called</param>
+		/// <param name="endcallback">An optional callback for when <paramref name="action"/> is invoked for the <paramref name="count"/>th time</param>
+		/// <param name="start">If true, the timer will start immediately</param>
+		public CountIntervalTimer(Action action, int count, int interval, Action endcallback = null, bool start = false)
 		{
 			_Action = action;
 			_Count = count;
 			_Interval = interval;
+			_EndCallback = endcallback;
 			if (start) Start();
 		}
 		#endregion
@@ -98,7 +118,12 @@ namespace ULL.Timers
 					_StartStamp = DateTime.Now;
 					_Timer = new Timer((a) =>
 					{
-						if (++_Counter <= _Count) Action(); else Stop();
+						if (++_Counter <= _Count) Action();
+						else
+						{
+							Stop();
+							EndCallback?.Invoke();
+						}
 					}, null, 0, Interval);
 				}
 				_TimerState = State.Running;

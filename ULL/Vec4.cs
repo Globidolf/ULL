@@ -3,7 +3,7 @@
  * 
  *	Author:		Silvan Pfister
  * 
- *	Version:	1.0
+ *	Version:	1.1
  * 
  *	Project:	ULL
  * 
@@ -223,6 +223,30 @@ namespace ULL.Vectors
 		/// </summary>
 		/// <returns>Returns the inverted version of this vector</returns>
 		public Vec4 Invert() { return new Vec4(this) * -1; }
+
+		/// <summary>
+		/// Checks if <paramref name="obj"/> can be cast to a Vec4 and if so, wether it is equal or not
+		/// </summary>
+		/// <param name="obj">The object to compare</param>
+		/// <returns>True if the Vec4 representation of <paramref name="obj"/> is the same as this object, otherwise false</returns>
+		public override bool Equals(object obj)
+		{
+			if (obj as Vec4 != null)
+				return ((Vec4)obj).X == X && ((Vec4)obj).Y == Y && ((Vec4)obj).Z == Z && ((Vec4)obj).W == W;
+			return false;
+		}
+		/// <summary>
+		/// Returns the hash code for this instance
+		/// </summary>
+		/// <returns>A hash code</returns>
+		public override int GetHashCode()
+		{
+			return
+				(X.GetHashCode() << 12 | X.GetHashCode() >> (32 - 12)) ^
+				(Y.GetHashCode() << 8 | Y.GetHashCode() >> (32 - 8)) ^
+				(Y.GetHashCode() << 4 | Y.GetHashCode() >> (32 - 4)) ^
+				W.GetHashCode();
+		}
 		/// <summary>
 		/// Creates string representation of the current Instance.
 		/// </summary>

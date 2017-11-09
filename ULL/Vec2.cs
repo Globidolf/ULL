@@ -3,7 +3,7 @@
  * 
  *	Author:		Silvan Pfister
  * 
- *	Version:	1.0
+ *	Version:	1.1
  * 
  *	Project:	ULL
  * 
@@ -76,6 +76,11 @@ namespace ULL.Vectors
 		/// </summary>
 		/// <param name="vec">The 3D vector to convert to 2D</param>
 		public Vec2(Vec3 vec) : this(vec.XY) { }
+		/// <summary>
+		/// Converts a 4D vector to 2D, losing the remaining axis in the process
+		/// </summary>
+		/// <param name="vec">The 4D vector to convert to 2D</param>
+		public Vec2(Vec4 vec) : this(vec.XY) { }
 		// Todo: add constructors with other vector classes
 		/// <summary>
 		/// Creates a specific 2D vector instance with the given values
@@ -123,6 +128,21 @@ namespace ULL.Vectors
 		/// <returns>Returns the inverted version of this vector</returns>
 		public Vec2 Invert() { return new Vec2(this) * -1; }
 
+		/// <summary>
+		/// Checks if <paramref name="obj"/> can be cast to a Vec2 and if so, wether it is equal or not
+		/// </summary>
+		/// <param name="obj">The object to compare</param>
+		/// <returns>True if the Vec2 representation of <paramref name="obj"/> is the same as this object, otherwise false</returns>
+		public override bool Equals(object obj) {
+			if (obj as Vec2 != null)
+				return ((Vec2)obj).X == X && ((Vec2)obj).Y == Y;
+			return false;
+		}
+		/// <summary>
+		/// Returns the hash code for this instance
+		/// </summary>
+		/// <returns>A hash code</returns>
+		public override int GetHashCode() { return (X.GetHashCode() << 4 | X.GetHashCode() >> (32-4)) ^ Y.GetHashCode(); }
 		/// <summary>
 		/// Creates string representation of the current Instance.
 		/// </summary>
