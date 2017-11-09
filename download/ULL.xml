@@ -1,0 +1,1119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ULL</name>
+    </assembly>
+    <members>
+        <member name="T:ULL.Timers.CountIntervalTimer">
+            <summary>
+            This timer will invoke a callback a certain amount of times periodically
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.CountIntervalTimer.Interval">
+            <summary>
+            The interval in which the callback is invoked periodically
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.CountIntervalTimer.Count">
+            <summary>
+            The total amount of times the callback can be invoked by this timer
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.CountIntervalTimer.EndCallback">
+            <summary>
+            The callback to be invoked when <see cref="P:ULL.Timers.CountIntervalTimer.Count"/> is reached
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.CountIntervalTimer.#ctor(System.Action,System.Int32,System.Int32,System.Action,System.Boolean)">
+            <summary>
+            Creates an instance of the <see cref="T:ULL.Timers.CountIntervalTimer"/> class
+            </summary>
+            <param name="action">The callback for the timer</param>
+            <param name="count">The amount of times the callback will be invoked</param>
+            <param name="interval">The interval in which the callback is called</param>
+            <param name="endcallback">An optional callback for when <paramref name="action"/> is invoked for the <paramref name="count"/>th time</param>
+            <param name="start">If true, the timer will start immediately</param>
+        </member>
+        <member name="M:ULL.Timers.CountIntervalTimer.Start">
+            <summary>
+            Starts or continues the timer. Is ignored if the Timer is running while called.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.CountIntervalTimer.Pause">
+            <summary>
+            Pauses the timer if it is currently running.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.CountIntervalTimer.Stop">
+            <summary>
+            Stops the timer and frees resources
+            </summary>
+        </member>
+        <member name="T:ULL.Timers.IntervalTimer">
+            <summary>
+            This Timer will invoke a callback periodically.
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.IntervalTimer.Interval">
+            <summary>
+            The interval in which the callback is invoked periodically
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.IntervalTimer.#ctor(System.Action,System.Int32,System.Boolean)">
+            <summary>
+            Creates an instance of this <see cref="T:ULL.Timers.IntervalTimer"/> class
+            </summary>
+            <param name="action">The callback for the timer</param>
+            <param name="interval">The interval in ms in which the callback is invoked</param>
+            <param name="start">If true, will start the timer immediately</param>
+        </member>
+        <member name="M:ULL.Timers.IntervalTimer.Start">
+            <summary>
+            Starts or continues the timer. Is ignored if the Timer is running while called.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.IntervalTimer.Pause">
+            <summary>
+            Pauses the timer if it is currently running.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.IntervalTimer.Stop">
+            <summary>
+            Stops the timer and frees resources
+            </summary>
+        </member>
+        <member name="T:ULL.Timers.IntervalUntilTimer">
+            <summary>
+            This Timer class will invoke a callback periodically until a specific point in time is reached.
+            Can optionally have another callback for when the <see cref="P:ULL.Timers.IntervalUntilTimer.End"/> is reached
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.IntervalUntilTimer.EndTime">
+            <summary>
+            Calculates the time in MS until <see cref="P:ULL.Timers.IntervalUntilTimer.End"/> is reached.
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.IntervalUntilTimer.Interval">
+            <summary>
+            The interval in which the callback is invoked periodically
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.IntervalUntilTimer.End">
+            <summary>
+            The Moment the Timer should be stopped automatically
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.IntervalUntilTimer.EndCallback">
+            <summary>
+            The callback to be invoked when <see cref="P:ULL.Timers.IntervalUntilTimer.End"/> is reached
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.IntervalUntilTimer.#ctor(System.Action,System.Int32,System.DateTime,System.Action,System.Boolean)">
+            <summary>
+            Creates an instance of the <see cref="T:ULL.Timers.IntervalUntilTimer"/> class
+            </summary>
+            <param name="action">The callback for the timer</param>
+            <param name="interval">The interval in which the callback is called</param>
+            <param name="end">The time to automatically stop this timer</param>
+            <param name="endCallback">The callback for when <paramref name="end"/> is reached</param>
+            <param name="start">If true, the timer will start immediately</param>
+        </member>
+        <member name="M:ULL.Timers.IntervalUntilTimer.Pause">
+            <summary>
+            Pauses the Timer.
+            Note that the timer will stop in this state if <see cref="P:ULL.Timers.IntervalUntilTimer.End"/> is reached while paused.
+            <see cref="P:ULL.Timers.IntervalUntilTimer.EndCallback"/> will invoke as well in that case.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.IntervalUntilTimer.Start">
+            <summary>
+            Starts or continues the Timer, unless the <see cref="P:ULL.Timers.IntervalUntilTimer.End"/> has been reached.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.IntervalUntilTimer.Stop">
+            <summary>
+            Stops the Timer and frees resources
+            </summary>
+        </member>
+        <member name="T:ULL.Timers.SingleTimer">
+            <summary>
+            This timer will invoke a callback after a defined delay
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.SingleTimer.Delay">
+            <summary>
+            The delay in milliseconds after which the callback will be invoked
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.SingleTimer.#ctor(System.Action,System.Int32,System.Boolean)">
+            <summary>
+            Creates an instance of the <see cref="T:ULL.Timers.SingleTimer"/> class
+            </summary>
+            <param name="action">The callback for this timer</param>
+            <param name="delay">The delay in ms after which the callback is invoked</param>
+            <param name="start">If true, the timer will start immediately</param>
+        </member>
+        <member name="M:ULL.Timers.SingleTimer.Start">
+            <summary>
+            Starts or continues the timer. Is ignored if the Timer is running while called.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.SingleTimer.Pause">
+            <summary>
+            Pauses the timer if it is currently running.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.SingleTimer.Stop">
+            <summary>
+            Stops the timer and frees resources
+            </summary>
+        </member>
+        <member name="T:ULL.Timers.State">
+            <summary>
+            Describes the current state of a timer
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.State.Invalid">
+            <summary>
+            This state is invalid. Something went wrong.
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.State.Running">
+            <summary>
+            The timer is currently running.
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.State.Paused">
+            <summary>
+            The timer has been paused and can continue.
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.State.Stopped">
+            <summary>
+            The timer has been stopped. It cannot continue.
+            </summary>
+        </member>
+        <member name="T:ULL.Timers.TimerBase">
+            <summary>
+            The base class for all timers, providing generic functionality propably used by all implementations.
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.TimerBase._StartStamp">
+            <summary>
+            The point in time the Timer started
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.TimerBase._PauseStamp">
+            <summary>
+            The point in time the Timer paused
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.TimerBase._Timer">
+            <summary>
+            The actual timer
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.TimerBase._Action">
+            <summary>
+            The callback for the timer
+            </summary>
+        </member>
+        <member name="F:ULL.Timers.TimerBase._TimerState">
+            <summary>
+            The current state of the timer
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.TimerBase.TimerState">
+            <summary>
+            Gets or Sets the state of the current timer.
+            Will invoke the corresponding method if set.
+            </summary>
+        </member>
+        <member name="P:ULL.Timers.TimerBase.Action">
+            <summary>
+            Gets or Sets the callback of the timer.
+            Can be set while the timer is running.
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.TimerBase.Start">
+            <summary>
+            The start method of the timer.
+            <para>
+            Set <see cref="F:ULL.Timers.TimerBase._StartStamp"/> to <see cref="P:System.DateTime.Now"/>
+            as well as <see cref="P:ULL.Timers.TimerBase.TimerState"/> to <see cref="F:ULL.Timers.State.Running"/> here.
+            Also configure and run the <see cref="F:ULL.Timers.TimerBase._Timer"/> here.
+            </para>
+            <para>
+            Handle the case in which the timer is paused by calling <see cref="M:System.Threading.Timer.Change(System.Int32,System.Int32)"/>
+            and set <see cref="F:ULL.Timers.TimerBase._StartStamp"/> to (<see cref="P:System.DateTime.Now"/> - (<see cref="F:ULL.Timers.TimerBase._PauseStamp"/> - <see cref="F:ULL.Timers.TimerBase._StartStamp"/>)).
+            </para>
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.TimerBase.Pause">
+            <summary>
+            The pause method of the timer.
+            <para>
+            Set <see cref="P:ULL.Timers.TimerBase.TimerState"/> to <see cref="F:ULL.Timers.State.Paused"/>
+            as well as <see cref="F:ULL.Timers.TimerBase._PauseStamp"/> to <see cref="P:System.DateTime.Now"/>
+            and call <see cref="M:System.Threading.Timer.Change(System.Int32,System.Int32)"/> with <see cref="F:System.Threading.Timeout.Infinite"/> as parameters.
+            </para>
+            </summary>
+        </member>
+        <member name="M:ULL.Timers.TimerBase.Stop">
+            <summary>
+            The stop method of the timer.
+            <para>
+            First, call <see cref="F:ULL.Timers.TimerBase._Timer"/> with <see cref="F:System.Threading.Timeout.Infinite"/> as parameters,
+            then call <see cref="M:System.IDisposable.Dispose"/> on the timer.
+            Finally set <see cref="P:ULL.Timers.TimerBase.TimerState"/> to <see cref="F:ULL.Timers.State.Stopped"/>.
+            </para>
+            </summary>
+        </member>
+        <member name="T:ULL.Utility">
+            <summary>
+            Provides some Shortcuts for specific calculations repetitively used as well as wrapper for the default Math library.
+            If a faster way to calculate specific aspects is available it can be replaced here.
+            </summary>
+        </member>
+        <member name="T:ULL.Vectors.Vec2">
+            <summary>
+            Represents a vector in 2D space
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.X">
+            <summary>
+            The horizontal X axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.Y">
+            <summary>
+            The vertical Y axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.TOP">
+            <summary>
+            A 2D-Vector representing the top direction (0,1)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.BOTTOM">
+            <summary>
+            A 2D-Vector representing the bottom direction (0,-1)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.LEFT">
+            <summary>
+            A 2D-Vector representing the left direction (-1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.RIGHT">
+            <summary>
+            A 2D-Vector representing the right direction (0,-1)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.ZERO">
+            <summary>
+            A 2D-Vector with all values being zero (0,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec2.ONE">
+            <summary>
+            A 2D-Vector with all values being one (1,1)
+            </summary>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.#ctor">
+            <summary>
+            Creates a 2D vector with zero distance (0,0)
+            </summary>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.#ctor(System.Single)">
+            <summary>
+            Creates a 2D vector with all coordinates set to <paramref name="value"/>
+            </summary>
+            <param name="value">The value to set the coordinates to</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.#ctor(ULL.Vectors.Vec2)">
+            <summary>
+            Duplicates the 2D vector <paramref name="copy"/> into a new instance
+            </summary>
+            <param name="copy">The vector to duplicate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.#ctor(ULL.Vectors.Vec3)">
+            <summary>
+            Converts a 3D vector to 2D, losing the remaining axis in the process
+            </summary>
+            <param name="vec">The 3D vector to convert to 2D</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.#ctor(ULL.Vectors.Vec4)">
+            <summary>
+            Converts a 4D vector to 2D, losing the remaining axis in the process
+            </summary>
+            <param name="vec">The 4D vector to convert to 2D</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.#ctor(System.Single,System.Single)">
+            <summary>
+            Creates a specific 2D vector instance with the given values
+            </summary>
+            <param name="x">The value of the horizontal X coordinate</param>
+            <param name="y">The value of the vertical Y coordinate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.DistanceSquared(ULL.Vectors.Vec2)">
+            <summary>
+            Calculates the squared distance between this vector and the <paramref name="other"/> vector.
+            Use this instead of <see cref="M:ULL.Vectors.Vec2.Distance(ULL.Vectors.Vec2)"/> where possible to increase performance.
+            </summary>
+            <param name="other">The second vector to calculate the distance between</param>
+            <returns>The squared distance between this vector and the <paramref name="other"/></returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.Distance(ULL.Vectors.Vec2)">
+            <summary>
+            Calculates the distance between this vector and the <paramref name="other"/> vector.
+            Try to use <see cref="M:ULL.Vectors.Vec2.DistanceSquared(ULL.Vectors.Vec2)"/> instead where possible to increase performance.
+            Use this method with <see cref="P:ULL.Vectors.Vec2.ZERO"/> as parameter to get the magnitude.
+            </summary>
+            <param name="other">The second vector to calculate the distance between</param>
+            <returns>The distance between this vector and the <paramref name="other"/></returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.Dot(ULL.Vectors.Vec2)">
+            <summary>
+            Calculates the dot product of this vector and the <paramref name="other"/> vector.
+            </summary>
+            <param name="other">The second vector to calculate a dot product with</param>
+            <returns>Returns the dot product of this and the <paramref name="other"/> vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.Normalize">
+            <summary>
+            Calculates a normalized Vector which has the same direction as the current one but a magnitude/distance of 1.
+            </summary>
+            <returns>The normalized vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.Invert">
+            <summary>
+            Calculates the inversion of this vector
+            </summary>
+            <returns>Returns the inverted version of this vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.Equals(System.Object)">
+            <summary>
+            Checks if <paramref name="obj"/> can be cast to a Vec2 and if so, wether it is equal or not
+            </summary>
+            <param name="obj">The object to compare</param>
+            <returns>True if the Vec2 representation of <paramref name="obj"/> is the same as this object, otherwise false</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.GetHashCode">
+            <summary>
+            Returns the hash code for this instance
+            </summary>
+            <returns>A hash code</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.ToString">
+            <summary>
+            Creates string representation of the current Instance.
+            </summary>
+            <returns>A string representing this instance</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Multiply(ULL.Vectors.Vec2,System.Single)">
+            <summary>
+            Multiplies a vector with a float
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> float</param>
+            <param name="right">The right float the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Division(ULL.Vectors.Vec2,System.Single)">
+            <summary>
+            Divides a vector by a float
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> float</param>
+            <param name="right">The right float the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Addition(ULL.Vectors.Vec2,System.Single)">
+            <summary>
+            Adds a float to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> float added to</param>
+            <param name="right">The right float to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Subtraction(ULL.Vectors.Vec2,System.Single)">
+            <summary>
+            Subtracts a float from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> float subtracted from</param>
+            <param name="right">The right float to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Multiply(ULL.Vectors.Vec2,ULL.Vectors.Vec2)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Division(ULL.Vectors.Vec2,ULL.Vectors.Vec2)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Addition(ULL.Vectors.Vec2,ULL.Vectors.Vec2)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Subtraction(ULL.Vectors.Vec2,ULL.Vectors.Vec2)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Multiply(ULL.Vectors.Vec2,ULL.Vectors.Vec3)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Division(ULL.Vectors.Vec2,ULL.Vectors.Vec3)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Addition(ULL.Vectors.Vec2,ULL.Vectors.Vec3)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Subtraction(ULL.Vectors.Vec2,ULL.Vectors.Vec3)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Multiply(ULL.Vectors.Vec2,ULL.Vectors.Vec4)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Division(ULL.Vectors.Vec2,ULL.Vectors.Vec4)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Addition(ULL.Vectors.Vec2,ULL.Vectors.Vec4)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec2.op_Subtraction(ULL.Vectors.Vec2,ULL.Vectors.Vec4)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="T:ULL.Vectors.Vec3">
+            <summary>
+            Represents a vector in 3D space
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.X">
+            <summary>
+            The horizontal X axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.Y">
+            <summary>
+            The vertical Y axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.Z">
+            <summary>
+            The depth Z axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.TOP">
+            <summary>
+            A 3D-Vector representing the top direction (0,1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.BOTTOM">
+            <summary>
+            A 3D-Vector representing the bottom direction (0,-1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.LEFT">
+            <summary>
+            A 3D-Vector representing the left direction (-1,0,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.RIGHT">
+            <summary>
+            A 3D-Vector representing the right direction (0,-1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.FRONT">
+            <summary>
+            A 4D-Vector representing the front direction (0,0,1)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.BACK">
+            <summary>
+            A 4D-Vector representing the front direction (0,0,-1)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.ZERO">
+            <summary>
+            A 3D-Vector with all values being zero (0,0,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec3.ONE">
+            <summary>
+            A 3D-Vector with all values being one (1,1,1)
+            </summary>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.#ctor">
+            <summary>
+            Creates a 3D vector with zero distance (0,0,0)
+            </summary>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.#ctor(System.Single)">
+            <summary>
+            Creates a 3D vector with all coordinates set to <paramref name="value"/>
+            </summary>
+            <param name="value">The value to set the coordinates to</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.#ctor(ULL.Vectors.Vec3)">
+            <summary>
+            Duplicates the 3D vector <paramref name="copy"/> into a new instance.
+            </summary>
+            <param name="copy">The vector to duplicate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.#ctor(ULL.Vectors.Vec2)">
+            <summary>
+            Turns a 2D vector into a 3D vector, with the remaining axis set to 0(zero).
+            </summary>
+            <param name="vec">The vector to duplicate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a specific 3D vector instance with the given values
+            </summary>
+            <param name="x">The value of the horizontal X coordinate</param>
+            <param name="y">The value of the vertical Y coordinate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.DistanceSquared(ULL.Vectors.Vec3)">
+            <summary>
+            Calculates the squared distance between this vector and the <paramref name="other"/> vector.
+            Use this instead of <see cref="M:ULL.Vectors.Vec3.Distance(ULL.Vectors.Vec3)"/> where possible to increase performance.
+            </summary>
+            <param name="other">The second vector to calculate the distance between</param>
+            <returns>The squared distance between this vector and the <paramref name="other"/></returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.Distance(ULL.Vectors.Vec3)">
+            <summary>
+            Calculates the distance between this vector and the <paramref name="other"/> vector.
+            Try to use <see cref="M:ULL.Vectors.Vec3.DistanceSquared(ULL.Vectors.Vec3)"/> instead where possible to increase performance.
+            Use this method with <see cref="P:ULL.Vectors.Vec3.ZERO"/> as parameter to get the magnitude.
+            </summary>
+            <param name="other">The second vector to calculate the distance between</param>
+            <returns>The distance between this vector and the <paramref name="other"/></returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.Dot(ULL.Vectors.Vec3)">
+            <summary>
+            Calculates the dot product of this vector and the <paramref name="other"/> vector.
+            </summary>
+            <param name="other">The second vector to calculate a dot product with</param>
+            <returns>Returns the dot product of this and the <paramref name="other"/> vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.Cross(ULL.Vectors.Vec3)">
+            <summary>
+            Calculates the cross vector from this vector and the <paramref name="other"/> vector.
+            </summary>
+            <param name="other">The second vector to calculate the cross vector from</param>
+            <returns>Returns the cross vector of this and the <paramref name="other"/> vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.Normalize">
+            <summary>
+            Calculates a normalized Vector which has the same direction as the current one but a magnitude/distance of 1.
+            </summary>
+            <returns>The normalized vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.Invert">
+            <summary>
+            Calculates the inversion of this vector
+            </summary>
+            <returns>Returns the inverted version of this vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.Equals(System.Object)">
+            <summary>
+            Checks if <paramref name="obj"/> can be cast to a Vec3 and if so, wether it is equal or not
+            </summary>
+            <param name="obj">The object to compare</param>
+            <returns>True if the Vec3 representation of <paramref name="obj"/> is the same as this object, otherwise false</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.GetHashCode">
+            <summary>
+            Returns the hash code for this instance
+            </summary>
+            <returns>A hash code</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.ToString">
+            <summary>
+            Creates string representation of the current Instance.
+            </summary>
+            <returns>A string representing this instance</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Multiply(ULL.Vectors.Vec3,System.Single)">
+            <summary>
+            Multiplies a vector with a float
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> float</param>
+            <param name="right">The right float the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Division(ULL.Vectors.Vec3,System.Single)">
+            <summary>
+            Divides a vector by a float
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> float</param>
+            <param name="right">The right float the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Addition(ULL.Vectors.Vec3,System.Single)">
+            <summary>
+            Adds a float to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> float added to</param>
+            <param name="right">The right float to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Subtraction(ULL.Vectors.Vec3,System.Single)">
+            <summary>
+            Subtracts a float from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> float subtracted from</param>
+            <param name="right">The right float to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Multiply(ULL.Vectors.Vec3,ULL.Vectors.Vec3)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Division(ULL.Vectors.Vec3,ULL.Vectors.Vec3)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Addition(ULL.Vectors.Vec3,ULL.Vectors.Vec3)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Subtraction(ULL.Vectors.Vec3,ULL.Vectors.Vec3)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Multiply(ULL.Vectors.Vec3,ULL.Vectors.Vec2)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Division(ULL.Vectors.Vec3,ULL.Vectors.Vec2)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Addition(ULL.Vectors.Vec3,ULL.Vectors.Vec2)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Subtraction(ULL.Vectors.Vec3,ULL.Vectors.Vec2)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Multiply(ULL.Vectors.Vec3,ULL.Vectors.Vec4)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Division(ULL.Vectors.Vec3,ULL.Vectors.Vec4)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Addition(ULL.Vectors.Vec3,ULL.Vectors.Vec4)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec3.op_Subtraction(ULL.Vectors.Vec3,ULL.Vectors.Vec4)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="T:ULL.Vectors.Vec4">
+            <summary>
+            Represents a vector in 4D space
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.X">
+            <summary>
+            The horizontal X axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.Y">
+            <summary>
+            The vertical Y axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.Z">
+            <summary>
+            The depth Z axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.W">
+            <summary>
+            The depth W axis coordinate of this vector
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.TOP">
+            <summary>
+            A 4D-Vector representing the top direction (0,1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.BOTTOM">
+            <summary>
+            A 4D-Vector representing the bottom direction (0,-1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.LEFT">
+            <summary>
+            A 4D-Vector representing the left direction (-1,0,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.RIGHT">
+            <summary>
+            A 4D-Vector representing the right direction (0,-1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.FRONT">
+            <summary>
+            A 4D-Vector representing the front direction (0,0,1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.BACK">
+            <summary>
+            A 4D-Vector representing the front direction (0,0,-1,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.WPLUS">
+            <summary>
+            A 4D-Vector with the W-axis set to 1(one) (0,0,0,1)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.WMINUS">
+            <summary>
+            A 4D-Vector with the W-axis set to -1(one) (0,0,0,-1)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.ZERO">
+            <summary>
+            A 4D-Vector with all values being zero (0,0,0)
+            </summary>
+        </member>
+        <member name="P:ULL.Vectors.Vec4.ONE">
+            <summary>
+            A 4D-Vector with all values being one (1,1,1,1)
+            </summary>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.#ctor">
+            <summary>
+            Creates a 4D vector with zero distance (0,0,0)
+            </summary>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.#ctor(System.Single)">
+            <summary>
+            Creates a 4D vector with all coordinates set to <paramref name="value"/>
+            </summary>
+            <param name="value">The value to set the coordinates to</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.#ctor(ULL.Vectors.Vec4)">
+            <summary>
+            Duplicates the 4D vector <paramref name="copy"/> into a new instance.
+            </summary>
+            <param name="copy">The vector to duplicate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.#ctor(ULL.Vectors.Vec3)">
+            <summary>
+            Turns a 3D vector into a 4D vector, with the remaining axis set to 0(zero).
+            </summary>
+            <param name="vec">The vector to duplicate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.#ctor(ULL.Vectors.Vec2)">
+            <summary>
+            Turns a 2D vector into a 4D vector, with the remaining axis set to 0(zero).
+            </summary>
+            <param name="vec">The vector to duplicate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Creates a specific 4D vector instance with the given values
+            </summary>
+            <param name="x">The value of the horizontal X coordinate</param>
+            <param name="y">The value of the vertical Y coordinate</param>
+            <param name="z">The value of the depth Z coordinate</param>
+            <param name="w">The value of the fourth W coordinate</param>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.DistanceSquared(ULL.Vectors.Vec4)">
+            <summary>
+            Calculates the squared distance between this vector and the <paramref name="other"/> vector.
+            Use this instead of <see cref="M:ULL.Vectors.Vec4.Distance(ULL.Vectors.Vec4)"/> where possible to increase performance.
+            </summary>
+            <param name="other">The second vector to calculate the distance between</param>
+            <returns>The squared distance between this vector and the <paramref name="other"/></returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.Distance(ULL.Vectors.Vec4)">
+            <summary>
+            Calculates the distance between this vector and the <paramref name="other"/> vector.
+            Try to use <see cref="M:ULL.Vectors.Vec4.DistanceSquared(ULL.Vectors.Vec4)"/> instead where possible to increase performance.
+            Use this method with <see cref="P:ULL.Vectors.Vec4.ZERO"/> as parameter to get the magnitude.
+            </summary>
+            <param name="other">The second vector to calculate the distance between</param>
+            <returns>The distance between this vector and the <paramref name="other"/></returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.Dot(ULL.Vectors.Vec4)">
+            <summary>
+            Calculates the dot product of this vector and the <paramref name="other"/> vector.
+            </summary>
+            <param name="other">The second vector to calculate a dot product with</param>
+            <returns>Returns the dot product of this and the <paramref name="other"/> vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.Normalize">
+            <summary>
+            Calculates a normalized Vector which has the same direction as the current one but a magnitude/distance of 1.
+            </summary>
+            <returns>The normalized vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.Invert">
+            <summary>
+            Calculates the inversion of this vector
+            </summary>
+            <returns>Returns the inverted version of this vector</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.Equals(System.Object)">
+            <summary>
+            Checks if <paramref name="obj"/> can be cast to a Vec4 and if so, wether it is equal or not
+            </summary>
+            <param name="obj">The object to compare</param>
+            <returns>True if the Vec4 representation of <paramref name="obj"/> is the same as this object, otherwise false</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.GetHashCode">
+            <summary>
+            Returns the hash code for this instance
+            </summary>
+            <returns>A hash code</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.ToString">
+            <summary>
+            Creates string representation of the current Instance.
+            </summary>
+            <returns>A string representing this instance</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Multiply(ULL.Vectors.Vec4,System.Single)">
+            <summary>
+            Multiplies a vector with a float
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> float</param>
+            <param name="right">The right float the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Division(ULL.Vectors.Vec4,System.Single)">
+            <summary>
+            Divides a vector by a float
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> float</param>
+            <param name="right">The right float the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Addition(ULL.Vectors.Vec4,System.Single)">
+            <summary>
+            Adds a float to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> float added to</param>
+            <param name="right">The right float to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Subtraction(ULL.Vectors.Vec4,System.Single)">
+            <summary>
+            Subtracts a float from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> float subtracted from</param>
+            <param name="right">The right float to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Multiply(ULL.Vectors.Vec4,ULL.Vectors.Vec4)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Division(ULL.Vectors.Vec4,ULL.Vectors.Vec4)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Addition(ULL.Vectors.Vec4,ULL.Vectors.Vec4)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Subtraction(ULL.Vectors.Vec4,ULL.Vectors.Vec4)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Multiply(ULL.Vectors.Vec4,ULL.Vectors.Vec3)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Division(ULL.Vectors.Vec4,ULL.Vectors.Vec3)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Addition(ULL.Vectors.Vec4,ULL.Vectors.Vec3)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Subtraction(ULL.Vectors.Vec4,ULL.Vectors.Vec3)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Multiply(ULL.Vectors.Vec4,ULL.Vectors.Vec2)">
+            <summary>
+            Multiplies a vector with a vector
+            </summary>
+            <param name="left">The left vector to be multiplied with the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is multiplied with </param>
+            <returns>returns the product of the multiplication</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Division(ULL.Vectors.Vec4,ULL.Vectors.Vec2)">
+            <summary>
+            Divides a vector by a vector
+            </summary>
+            <param name="left">The left vector to be divided by the <paramref name="right"/> vector</param>
+            <param name="right">The right vector the <paramref name="left"/> vector is divided by</param>
+            <returns>returns the result of the division</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Addition(ULL.Vectors.Vec4,ULL.Vectors.Vec2)">
+            <summary>
+            Adds a vector to a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector added to</param>
+            <param name="right">The right vector to add to the <paramref name="left"/> vector</param>
+            <returns>returns the result of the addition</returns>
+        </member>
+        <member name="M:ULL.Vectors.Vec4.op_Subtraction(ULL.Vectors.Vec4,ULL.Vectors.Vec2)">
+            <summary>
+            Subtracts a vector from a vector
+            </summary>
+            <param name="left">The left vector to have the <paramref name="right"/> vector subtracted from</param>
+            <param name="right">The right vector to subtract from the <paramref name="left"/> vector</param>
+            <returns>returns the result of the subtraction</returns>
+        </member>
+    </members>
+</doc>
