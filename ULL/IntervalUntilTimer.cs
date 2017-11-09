@@ -34,7 +34,7 @@ namespace ULL.Timers
 		private int EndTime { get { return End > DateTime.Now ? (int)(End - DateTime.Now).TotalMilliseconds : Infinite; } }
 		#endregion
 		/// <summary>
-		/// The Interval in which the Timer is called periodically
+		/// The interval in which the callback is invoked periodically
 		/// </summary>
 		public int Interval {
 			get { return _Interval; }
@@ -91,7 +91,7 @@ namespace ULL.Timers
 		#region Methods
 		#region Constructor
 		/// <summary>
-		/// Creates an instance of the <see cref="IntervalUntilTimer"/>
+		/// Creates an instance of the <see cref="IntervalUntilTimer"/> class
 		/// </summary>
 		/// <param name="action">The callback for the timer</param>
 		/// <param name="interval">The interval in which the callback is called</param>

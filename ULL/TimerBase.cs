@@ -3,7 +3,7 @@
  * 
  *	Author:		Silvan Pfister
  * 
- *	Version:	0.1
+ *	Version:	1.0
  * 
  *	Project:	ULL
  * 
@@ -14,14 +14,38 @@ using System.Threading;
 using static System.Threading.Timeout;
 namespace ULL.Timers
 {
+	/// <summary>
+	/// The base class for all timers, providing generic functionality propably used by all implementations.
+	/// </summary>
 	public abstract class TimerBase
 	{
+		#region Fields
+		/// <summary>
+		/// The point in time the Timer started
+		/// </summary>
 		protected DateTime _StartStamp;
+		/// <summary>
+		/// The point in time the Timer paused
+		/// </summary>
 		protected DateTime _PauseStamp;
+		/// <summary>
+		/// The actual timer
+		/// </summary>
 		protected Timer _Timer;
+		/// <summary>
+		/// The callback for the timer
+		/// </summary>
 		protected Action _Action;
+		/// <summary>
+		/// The current state of the timer
+		/// </summary>
 		protected State _TimerState;
-
+		#endregion
+		#region Properties
+		/// <summary>
+		/// Gets or Sets the state of the current timer.
+		/// Will invoke the corresponding method if set.
+		/// </summary>
 		public State TimerState {
 			get { return _TimerState; }
 			set {
@@ -34,6 +58,10 @@ namespace ULL.Timers
 				}
 			}
 		}
+		/// <summary>
+		/// Gets or Sets the callback of the timer.
+		/// Can be set while the timer is running.
+		/// </summary>
 		public Action Action {
 			get { return _Action; }
 			set {
@@ -50,10 +78,39 @@ namespace ULL.Timers
 				}
 			}
 		}
-
+		#endregion
+		#region Methods
+		/// <summary>
+		/// The start method of the timer.
+		/// <para>
+		/// Set <see cref="_StartStamp"/> to <see cref="DateTime.Now"/>
+		/// as well as <see cref="TimerState"/> to <see cref="State.Running"/> here.
+		/// Also configure and run the <see cref="_Timer"/> here.
+		/// </para>
+		/// <para>
+		/// Handle the case in which the timer is paused by calling <see cref="Timer.Change(int, int)"/>
+		/// and set <see cref="_StartStamp"/> to (<see cref="DateTime.Now"/> - (<see cref="_PauseStamp"/> - <see cref="_StartStamp"/>)).
+		/// </para>
+		/// </summary>
 		public abstract void Start();
+		/// <summary>
+		/// The pause method of the timer.
+		/// <para>
+		/// Set <see cref="TimerState"/> to <see cref="State.Paused"/>
+		/// as well as <see cref="_PauseStamp"/> to <see cref="DateTime.Now"/>
+		/// and call <see cref="Timer.Change(int, int)"/> with <see cref="Infinite"/> as parameters.
+		/// </para>
+		/// </summary>
 		public abstract void Pause();
+		/// <summary>
+		/// The stop method of the timer.
+		/// <para>
+		/// First, call <see cref="_Timer"/> with <see cref="Infinite"/> as parameters,
+		/// then call <see cref="IDisposable.Dispose"/> on the timer.
+		/// Finally set <see cref="TimerState"/> to <see cref="State.Stopped"/>.
+		/// </para>
+		/// </summary>
 		public abstract void Stop();
-
+		#endregion
 	}
 }
